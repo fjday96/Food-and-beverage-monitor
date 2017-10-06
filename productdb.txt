@@ -1,0 +1,63 @@
+DROP TABLE productdb;
+
+
+
+CREATE TABLE productdb(
+id NUMBER(6) NOT NULL, name VARCHAR2(40) NOT NULL, price VARCHAR2(8) NOT NULL, store VARCHAR2(20) NOT NULL, type VARCHAR2(1) NOT NULL, PRIMARY KEY (id)
+);
+
+
+
+INSERT INTO productdb VALUES (1, 'Watermellon', '0.80', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (2, 'Mars Bar', '2.50', 'Aldi', 'f');
+
+INSERT INTO productdb VALUES (3, 'Bananas', '0.50', 'Aldi', 'f');
+
+INSERT INTO productdb VALUES (4, 'Apples 6pk', '1.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (5, 'Lettuce', '1.60', 'Aldi', 'f');
+
+INSERT INTO productdb VALUES (6, 'Coca Cola 2L', '4.50', 'Woolworths', 'b');
+
+INSERT INTO productdb VALUES (7, 'Tomato', '0.30', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (8, 'Eggs dozen', '6.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (9, 'Ham Honey Leg Shaved', '5.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (10, 'Turkey', '4.50', 'Woolworths', 'f');
+INSERT INTO productdb VALUES (11, 'Chicken Breast 1kg', '7.00', 'Aldi', 'f');
+
+INSERT INTO productdb VALUES (12, 'Barbeque Shapes', '2.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (13, 'Chicken Shapes', '2.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (14, 'Pizza Shapes', '2.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (15, 'Choc Chip Cookies', '5.00', 'Aldi', 'f');
+
+INSERT INTO productdb VALUES (16, 'Broccoli', '1.10', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (17, 'Oranges', '2.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (18, 'Party Pies 24pk', '8.00', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (19, 'McCain BBQ Pizza', '10.50', 'Woolworths', 'f');
+
+INSERT INTO productdb VALUES (20, 'Bulla Vanilla Icecreame', '8.50', 'Aldi', 'f');
+INSERT INTO productdb VALUES (21, 'Milk 2L', '2.00', 'Woolworths', 'b');
+
+INSERT INTO productdb VALUES (22, 'Milk 3L', '3.00', 'Coles', 'b');
+
+INSERT INTO productdb VALUES (23, 'Apple Juice 2L', '4.50', 'Coles', 'b');
+
+INSERT INTO productdb VALUES (24, 'Fanta 2L', '4.50', 'Coles', 'b');
+
+INSERT INTO productdb VALUES (25, 'Bottled Water 12pk', '7.50', 'Coles', 'b');
+
+
+
+
+
+commit;
