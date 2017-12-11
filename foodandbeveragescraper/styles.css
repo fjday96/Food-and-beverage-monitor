@@ -1,0 +1,424 @@
+@charset "utf-8";
+/* Global CSS Document */
+
+
+
+
+
+
+/* Custom Fonts */
+@font-face {
+	font-family: 'OpenSans'; 
+	src: url('Media/Fonts/OpenSans-Regular.ttf');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'OpenSans'; 
+	src: url('Media/Fonts/OpenSans-Light.ttf');
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'OpenSans'; 
+	src: url('Media/Fonts/OpenSans-Bold.ttf');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'OpenSans'; 
+	src: url('Media/Fonts/OpenSans-ExtraBold.ttf');
+	font-weight: 900;
+	font-style: normal;
+}
+
+
+@font-face {
+	font-family: 'Roboto'; 
+	src: url('Media/Fonts/Roboto-Regular.ttf');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Roboto'; 
+	src: url('Media/Fonts/Roboto-Thin.ttf');
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Roboto'; 
+	src: url('Media/Fonts/Roboto-Light.ttf');
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Roboto'; 
+	src: url('Media/Fonts/Roboto-Bold.ttf');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+
+
+
+/* HTML Styles */
+body {
+	margin: 0;
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 400;
+	background-color: #111;
+	font-size: 14px;
+	color: #333;
+}
+h1 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 200;
+	font-size: 40px;
+	color: #5C94CF;
+	margin-top: 0;
+}
+h2 {
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	color: #555;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+h3 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 200;
+	font-size: 25px;
+	color: #5C94CF;
+	margin-top: 0px;
+}
+a {
+	text-decoration: none;
+}
+input {
+	border-radius: 0;
+}
+
+
+
+
+
+
+/* General Styles */
+#container {
+	width: 840px;
+	margin: 0 auto;
+	padding: 0px 15px;
+}
+.welcome_text {
+	float: left;
+}
+svg > g > g:last-child { pointer-events: none } /*To fix Google Charts bug*/
+
+
+
+
+
+/* Top Bar Styles */
+#top_bar {
+	background-color: #111;
+	height: 55px;
+}
+#top_bar_table {
+	border-collapse: collapse;
+	width: 100%;
+	height: 30px;
+}
+#top_bar_table td {
+	padding-top: 3px;
+}
+#input_quick_search {
+	height: 30px;
+	margin-top: 0px;
+	border: none;
+	outline: 0;
+	padding-left: 10px;
+}
+#button_quick_search {
+	background-color: #111;
+	border: none;
+	height: 30px;
+	color: #EEE;
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 700;
+	outline: 0;
+	width: 100px;
+	text-align: center;
+}
+#button_quick_search:hover {
+	cursor: pointer;
+	background-color: #333;
+}
+	
+#top_bar_contact {
+	font-family: 'OpenSans', sans-serif;
+	color: #222;
+}
+
+
+
+
+
+/* Nav Bar Styles */
+.nav_bar {
+	background-color: #111;
+	height: 55px;
+	/*transition: 0.7s;*/
+	position: absolute;
+	width: 100%;
+}
+#logo {
+	height: 100px;
+	width: 230px;
+	background-image: url(Media/Images/logo.png);
+	background-size: 230px 100px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	float: left;
+	/*transition: 0.7s;*/
+}
+.nav_button {
+	display: inline-block;
+	height: 55px;
+	line-height: 55px;
+	margin: 0;
+	float: left;
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 200;
+	/*transition: height 0.7s, line-height 0.7s;*/
+	font-size: 18px;
+}
+a .nav_button {
+	/*padding: 0px 20px;*/
+	margin-left: 25px;
+	text-decoration: none;
+	color: #D7D7D7;
+}
+a .nav_button:hover {
+	color: #FFFFFF;
+}
+a .nav_button:active {
+	color: #FFFFFF;
+}
+a:active .nav_button {
+	color: #FFFFFF;
+}
+.nav_bar_space {
+	background-color: #111;
+	height: 40px;
+}
+.nav_bar_fixed {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.menu_icon {
+	display: none;
+}
+.button_login {
+	padding: 0px 20px;
+	height: 45px;
+	line-height: 45px;
+	background-color: #333;
+	float: right;
+	color: #EEE;
+	margin-right: 10px;
+	margin-top: 5px;
+	
+}
+.button_login:hover {
+	background-color: #555;
+}
+#small_logo {
+	float: left;
+	margin-top: 2px;
+}
+
+
+
+
+
+/* Mobile Nav Bar Styles */
+#mobile_nav {
+	background-color: #222;
+	font-size: 18px;
+	color: #D4D4D4;
+	position: absolute;
+	width: 100%;
+	display: none;
+}
+.mobile_nav_button {
+	height: 40px;
+	line-height: 40px;
+	text-decoration: none;
+}
+.mobile_nav_button:hover {
+	background-color: #111;
+	cursor: pointer;
+}
+a .mobile_nav_button{
+	text-decoration: none;
+}
+#mobile_nav a:link {
+	text-decoration: none;
+	color: #D4D4D4;
+}
+#mobile_nav a:visited {
+	text-decoration: none;
+	color: #D4D4D4;
+}
+#mobile_nav a:hover {
+	text-decoration: none;
+	color: #FFF;
+}
+#mobile_nav a:active {
+	text-decoration: none;
+	color: #FFF;
+}
+.menu_icon:hover {
+	cursor: pointer;
+	background-color: #111;
+}
+
+
+
+
+
+
+/* Content Styles */
+.dark_grey {
+	background-color: #E3E3E3;
+}
+.light_grey {
+	background-color: #F4F4F4;
+}
+.content_section {
+	margin: 0px;
+	padding: 40px 0px;
+}
+
+
+
+
+
+
+/* Footer Styles */
+#table_footer {
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+#table_footer td {
+}
+#footer_top {
+	background-color: #111;
+	padding: 20px 0px;
+}
+#footer_top h2 {
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 200;
+	color: #EEE;
+	font-size: 22px;
+}
+a .footer_button {
+	color: #888;
+	font-size: 14px;
+}
+a .footer_button:hover {
+	color: #EEE;
+}
+#table_footer a {
+	color: #888;
+}
+#footer_bottom {
+	font-family: 'OpenSans', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	color: #DDD;
+	padding: 15px 0px;
+	border-top: solid #222 1px;
+}
+.td_padding_left {
+}
+.mobile_footer_tr {
+	display: none;
+}
+.mobile_footer_td {
+	display: none;
+	padding-top: 20px;
+}
+
+
+
+
+
+
+/*Changes to CSS when screen width is 870px or less*/
+@media only screen and (max-width: 880px) {
+    #container {
+		width: 90%;
+		margin: 0 auto;
+		padding: 0;
+	}
+	.nav_bar {
+		height: 50px;
+	}
+	.menu_icon {
+		width: 55px;
+		height: 55px;
+		background-color: #363636;
+		float: right;
+		display: block;
+		background-image: url(Media/Images/menu_icon.png);
+		background-size: 55px 55px;
+	}
+	#container {
+		width: 90%;
+		margin: 0 auto;
+		padding: 0;
+	}
+	.nav_bar {
+		height: 50px;
+		transition: none;
+	}
+	#logo {
+		height: 50px;
+		width: 115px;
+		background-size: 115px 50px;
+		transition: none;
+	}
+	.nav_button {
+		height: 50px;
+		line-height: 50px;
+	}
+	.nav_bar_space {
+		height: 50px;
+	}
+	.nav_button {
+		display: none;
+	}
+	#top_bar {
+	}
+	.dark_grey {
+		padding: 50px 0px;
+	}
+	.light_grey {
+		padding: 50px 0px;
+	}
+	.td_padding_left {
+		display: none;
+	}
+	.mobile_footer_tr {
+		padding-top: 20px;
+		display: block;
+	}
+	.mobile_footer_td {
+		display: block;
+	}
+}
