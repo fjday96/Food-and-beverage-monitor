@@ -4,12 +4,13 @@ if(!isset($_SESSION["user_email"])) {
 	header('Location: login.php');
 }
 ?>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About</title>
+<title>Change Password</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
@@ -17,16 +18,21 @@ if(!isset($_SESSION["user_email"])) {
 <link rel="icon" type="image/png" href="Media/Images/favicon.png">
 
 <style>
-	.td_about {
-		width: 280px;
+	a #submit_button {
+		text-decoration: none;
 	}
-
-	@media only screen and (max-width: 880px) {
-		.td_about {
-			width: 100%;
-			float: left;
-			margin-bottom: 40px;
-		}
+	#delete_button {
+		background-color: #5C94CF;
+		color: #111;
+		padding: 10px;
+		display: inline-block;
+		font-family: 'OpenSans', sans-serif;
+		font-size: 16px;
+		margin-top: 10px;
+		cursor: pointer;
+	}
+	#delete_button:hover {
+		background-color: #A4CDE1;	
 	}
 </style>
 
@@ -60,23 +66,9 @@ if(!isset($_SESSION["user_email"])) {
 
 <div class="content_section light_grey">
 	<div id="container">
-		<h1>About</h1>
-		<table>
-			<tr>
-				<td class="td_about" align="center">
-					<a href="http://www.globalobesity.com.au/"><img src="Media/Images/globe.png"></a>
-				</td>
-				<td class="td_about" align="center">
-					<a href="http://www.deakin.edu.au/cphr"><img src="Media/Images/cphr.png"></a>
-				</td>
-				<td class="td_about" align="center">
-					<a href="http://www.deakin.edu.au/"><img src="Media/Images/deakin.png"></a>
-				</td>
-			</tr>
-		</table>
-		<p>The Food and Beverage Scraper has been developed by students as a project for their capstone units SIT374 Project Design and SIT302 Project Delivery. </p>		
-		<p>The site has been developed for GLOBE, a team of people dedicated to promoting and implementing obesity prevention, which forms a part of Deakin's Centre for Population Health Research (CPHR).</p>
-        <p>Food and Beverage Scraper is intended to assist in GLOBE's research by making it is easier to work with supermarket product data.</p>
+		<h1>Delete account</h1>
+		<p>If you select delete, you will no longer be able to sign in with this account and your details will be wiped.</p>
+		<a href="delete_user.php"><div id="delete_button">Delete</div></a>
 		
 	</div>
 </div>
@@ -85,7 +77,7 @@ if(!isset($_SESSION["user_email"])) {
 	<div id="container">
 		<table id="table_footer">
 			<tr>
-				<td valign="top" class="">
+				<td valign="top">
 				<h2>Quick Links</h2>
 					<a href="index.php"><div class="footer_button">Home</div></a>
 					<a href="spreadsheets.php"><div class="footer_button">Spreadsheets</div></a>
@@ -94,15 +86,19 @@ if(!isset($_SESSION["user_email"])) {
 					<a href="about.php"><div class="footer_button">About</div></a>
 				</td>
 				<td valign="top" class="td_padding_left">
+				<div style="width: 160px; margin: 0 auto;">
 				<h2>Additional Links</h2>
 					<a href="http://www.globalobesity.com.au/" target="_blank"><div class="footer_button">GLOBE</div></a>
 					<a href="http://www.deakin.edu.au/cphr" target="_blank"><div class="footer_button">CPHR</div></a>
 					<a href="http://www.deakin.edu.au/" target="_blank"><div class="footer_button">Deakin University</div></a>
+				</div>
 				</td>
 				<td valign="top" class="td_padding_left">
+				<div style="float: right;">
 				<h2>Contact</h2>
 					<a href="mailto:#" style="font-size: 14px">email@deakin.edu.au</a> <br>
 					<a href="tel:#" style="font-size: 14px">00 0000 0000</a>
+				</div>	
 				</td>
 			</tr>
 			<tr>

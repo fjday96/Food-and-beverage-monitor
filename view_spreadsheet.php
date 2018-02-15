@@ -9,7 +9,7 @@ if(!isset($_SESSION["user_email"])) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search</title>
+<title>View Spreadsheet</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
@@ -17,87 +17,85 @@ if(!isset($_SESSION["user_email"])) {
 <link rel="icon" type="image/png" href="Media/Images/favicon.png">
 
 <style>
-	#table_main_search {
+	#table_spreadsheets {
 		width: 100%;
-		border-collapse: collapse;
-		border: none;
-		margin: 0 auto;
 	}
-	#button_main_search {
-		background-color: #474747;
-		border: none;
-		height: 50px;
+	#table_spreadsheets, #table_spreadsheets th, #table_spreadsheets td{
+		border: 1px solid #222;
+    	border-collapse: collapse;
+	}
+	#table_spreadsheets th, #table_spreadsheets td{
+		padding: 5px;
+		text-align: left;
+		border-left: none;
+		border-right: none;
+	}
+	#table_spreadsheets tr:nth-child(odd) {
+    	background-color: #E3E3E3;
+	}
+	#table_spreadsheets tr:nth-child(even) {
+    	background-color: #F4F4F4;
+	}
+	#table_spreadsheets {
+		/*table-layout: fixed;*/
+	}
+	#table_spreadsheets th {
+		font-size: 28px;
+		background-color: #222;
+		font-style: normal;
+	}
+	#table_spreadsheets td {
+		border-left: solid thin #999;
+		border-right: solid thin #999;
+	}
+	#table_spreadsheets th h3 {
 		color: #EEE;
-		font-family: 'OpenSans', sans-serif;
-		font-weight: 700;
-		outline: 0;
-		width: 135px;
-		text-align: center;
+		margin: 0;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 400;
 		font-size: 20px;
 	}
-	#button_main_search:hover {
-		cursor: pointer;
-		background-color: #333;
-		color: #5C94CF;
-	}
-	#input_main_search_td {
+	#table_spreadsheets_head {
+    	border-collapse: collapse;
 		width: 100%;
+		font-size: 16px;
+		font-weight: 200;
+		color: #FFF;
+		background-color: #222;
+		table-layout: fixed; 
 	}
-	#input_main_search {
-		height: 50px;
-		margin-top: 0px;
-		border: none;
-		padding-left: 10px;
-		width: 100%;
-		font-size: 20px;
-		outline: 0;
+	#table_spreadsheets_head td {
+		padding: 10px 0 10px 10px;
 	}
-	#table_search_options {
-		margin-top: 20px;
-		display: none;
-		width: 100%;
-	}
-	#table_search_options h2{
-		font-size: 20px;
-	}
-	#table_search_options td {
-		width: 270px;
+	.table_button {
+		background-color: #5C94CF;
+		width: 120px;
 		float: left;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		margin: 4px;
+		text-align: center;
+		padding: 5px 0px;
 	}
-	select {
-		float: right; 
-		width: 150px;  
-		margin-right: 10px;
+	a .table_button {
+		text-decoration: none;
+		color: #000;
 	}
-	#search_options_toggle {
-		margin-top: 20px;
+	#spreadsheet_div {
+		max-height: 700px;
+		overflow-y: scroll;
+		overflow-x: hidden;
 		display: inline-block;
+		padding-right: 1px;
 	}
-	#search_options_toggle:hover {
-		text-decoration: underline;
-		cursor: pointer;
+
+	@media only screen and (max-width: 880px) {
+		#table_section {
+			width: 100%;
+			overflow-x: scroll;
+		}
 	}
-	#table_main_search input {
-		-webkit-appearance: none;
-		-webkit-border-radius:0; 
-	}
+	
 </style>
 
-<script>
-	function toggleSearchOptions() {
-		if(document.getElementById("table_search_options").style.display == 'block') {
-			document.getElementById("table_search_options").style.display = 'none';
-			document.getElementById("search_options_toggle").innerHTML = 'Show Search Options...';
-		}
-		else {
-			document.getElementById("table_search_options").style.display = 'block';
-			document.getElementById("search_options_toggle").innerHTML = 'Hide Search Options...';
-		}
-		
-	}
-</script>
 
 </head>
 
@@ -127,70 +125,57 @@ if(!isset($_SESSION["user_email"])) {
 	<a href="logout.php"><div class="mobile_nav_button"><div id="container">Logout</div></div></a>
 </div>
 
-<div class="content_section dark_grey">
-	<div id="container">
-		<form id="quick_search_form" action="search_results.php" method="get">
-			<table id="table_main_search">
-				<tr>
-					<td id="input_main_search_td">
-						<input type="search" id="input_main_search" name="input_main_search" placeholder="Keyword..." maxlength="35" autofocus>
-					</td>
-					<td>
-						<input type="submit" id="button_main_search" name="button_main_search" value="Search">
-					</td>
-				</tr>
-			</table>
-			
-			<table id="table_search_options">
-				<tr>
-					<td valign="top">
-						<h2>Shops</h2>
-						<input type="checkbox" name="shops_woolworths" value="woolworths"> Woolworths <br>
-						<input type="checkbox" name="shops_coles" value="coles"> Coles 
-					</td>
-					<td valign="top">
-						<h2>Specials</h2>
-						<input type="radio" name="products" value="all" checked> All Products <br>
-						<input type="radio" name="products" value="special"> Products on special <br>
-						<input type="radio" name="products" value="multibuy"> Products with a multibuy special <br>
-						<input type="radio" name="products" value="regular"> Products not on special 
-					</td>
-					<td valign="top">
-						<h2>Price range</h2>
-						From: <select name="min_price">
-							  <option value="-1">-MIN-</option>
-							  <option value="0">$0.00</option>
-							  <option value="2.5">$2.50</option>
-							  <option value="5">$5.00</option>
-							  <option value="10">$10.00</option>
-							  <option value="15">$15.00</option>
-							  <option value="20">$20.00</option>
-							</select>
-							 <br>
-						<div style="margin-top: 10px" >To: <select name="max_price">
-							  <option value="1000">-MAX-</option>
-							  <option value="2.5">$2.50</option>
-							  <option value="5">$5.00</option>
-							  <option value="10">$10.00</option>
-							  <option value="15">$15.00</option>
-							  <option value="20">$20.00</option>
-							  <option value="50">$50.00</option>
-							</select> </div>
-					</td>
-				</tr>
-			</table>
-		</form>
-		<div id="search_options_toggle" onclick="toggleSearchOptions()">Show Search Options...</div>
-	</div>
-</div>
-
 <div class="content_section light_grey">
 	<div id="container">
-		<h1>Why use the search?</h1>
-		<p>The search allows you to query our database of food and beverage prices in Australia's largest supermarkets. The supermarkets include Woolworths and Coles.</p>
-		<p>Use the the search bar at the top right to quickly search by keywork from any page on the site or use the search form above to narrow your search results.</p>
-		<p>The purpose of the search is to allow you to find specific products from the most recently scraped data.</p>
-	</div>
+		<h1>Viewing spreadsheet</h1>
+    </div>
+		<?php
+			if(isset($_GET['spreadsheet'])) {
+				$spreadsheet = $_GET['spreadsheet'];
+				$dir = "Media/spreadsheets";
+				$filenames = scandir($dir);
+				$valid = false;
+				
+				if(file_exists($dir."/".$spreadsheet) == true) {
+					$valid = true;
+				}
+				
+				if($valid == true) {
+					echo "<p>Displayed below is the data from the file \"", $spreadsheet, "\".</p>";
+					$f = fopen("Media/spreadsheets/".$spreadsheet, "r");
+					$x = 0;
+
+					echo "<div id=\"table_section\">";
+
+					while (($line = fgetcsv($f)) !== false) {
+						if($x == 0) {
+							echo "<table id=\"table_spreadsheets\">";
+							echo "<tr>";
+								foreach ($line as $cell) {
+									echo "<td>" . htmlspecialchars($cell) . "</td>";
+								}
+							echo "</tr>";
+							$x++;
+						} else {
+							echo "<tr>";
+								foreach ($line as $cell) {
+									echo "<td>" . htmlspecialchars($cell) . "</td>";
+								}
+							echo "</tr>";
+						}
+					}
+
+					fclose($f);
+					echo "</table>";
+					echo "</div>";
+					echo "</div>";
+				} else {
+					echo "<p>Spreadsheet selected does not exist.</p>";
+				}
+			} else {
+				echo "<p>Unable to display spreadsheet. Make sure you have selected a spreadsheet from the spreadsheets page.</p>";
+			}
+		?>
 </div>
 
 <div id="footer_top">

@@ -2,25 +2,35 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
+<script src="javascript.js" type="text/javascript"></script>
 
 <style>
 	#contact_table {
 		border: none;
+		width: 100%;
+		margin: 0 auto;
 	}
 	.contact_td_label {
-		width: 200px;
+		width: 100px;
+	}
+	.contact_label {
+		width: 100px;
 	}
 	.contact_td_input {
-		width: 640px;
+		width: 100%;
+	}
+	.contact_input {
+		width: 100%;
 	}
 	#contact_table input {
 		outline: none;
 		height: 25px;
-		width: 640px;
+		width: 100%;
 		font-size: 14px;
 		font-family: OpenSans-Regular, sans-serif;
 	}
@@ -79,59 +89,70 @@
 		<a href="index.php"><div id="logo"></div></a>
 		<div id="button_section">
 			<a href="index.php"><div class="nav_button">HOME</div></a>
+			<a href="spreadsheets.php"><div class="nav_button">SPREADSHEETS</div></a>
 			<a href="search.php"><div class="nav_button">SEARCH</div></a>
 			<a href="reports.php"><div class="nav_button">REPORTS</div></a>
 			<a href="about.php"><div class="nav_button">ABOUT</div></a>
-			<a href="contact.php"><div class="nav_button">CONTACT</div></a>
+			<div onclick="menu()" class="menu_icon"></div>
 		</div>
 	</div>
 </div>
 <div class="nav_bar_space"></div>
 
-<div class="content_section dark_grey">
+<div id="mobile_nav">
+	<a href="index.php"><div class="mobile_nav_button"><div id="container">Home</div></div></a>
+	<a href="spreadsheets.php"><div class="mobile_nav_button"><div id="container">Spreadsheets</div></div></a>
+	<a href="search.php"><div class="mobile_nav_button"><div id="container">Search</div></div></a>
+	<a href="reports.php"><div class="mobile_nav_button"><div id="container">Reports</div></div></a>
+	<a href="about.php"><div class="mobile_nav_button"><div id="container">About</div></div></a>
+	<a href="account_settings.php"><div class="mobile_nav_button"><div id="container">Account Settings</div></div></a>
+	<a href="logout.php"><div class="mobile_nav_button"><div id="container">Logout</div></div></a>
+</div>
+
+<div class="content_section light_grey">
 	<div id="container">
-		<h1>CONTACT</h1>
+		<h1>Contact</h1>
 		<p>Comments? Questions? Send us a message.</p>
 		<form>
 			<table id="contact_table">
 				<tr>
 					<td class="contact_td_label">
-						First name
+						<div class="contact_label">First Name</div>
 					</td>
 					<td class="contact_td_input">
-						<input id="input_first_name" name="input_first_name" maxlength="20">
+						<input class="contact_input" id="input_first_name" name="input_first_name" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<td class="contact_td_label">
-						Last name
+						<div class="contact_label">Last name</div>
 					</td>
 					<td class="contact_td_input">
-						<input id="input_last_name" name="input_last_name" maxlength="20">
+						<input class="contact_input" id="input_last_name" name="input_last_name" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<td class="contact_td_label">
-						Email
+						<div class="contact_label">Email</div>
 					</td>
 					<td class="contact_td_input">
-						<input id="input_email" name="input_email" maxlength="20">
+						<input class="contact_input" id="input_email" name="input_email" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<td class="contact_td_label">
-						Phone No.
+						<div class="contact_label">Phone No.</div>
 					</td>
 					<td class="contact_td_input">
-						<input id="input_phone" name="input_phone" maxlength="20">
+						<input class="contact_input" id="input_phone" name="input_phone" maxlength="20">
 					</td>
 				</tr>
 				<tr>
 					<td class="contact_td_label">
-						Message
+						<div class="contact_label">Message</div>
 					</td>
 					<td class="contact_td_input">
-						<textarea id="input_message" name="input_message" style="width: 100%; resize: none;" maxlength="1000"></textarea>
+						<textarea class="contact_input" id="input_message" name="input_message" style="width: 100%; resize: none; padding-right: 2px;" maxlength="1000"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -151,32 +172,39 @@
 	<div id="container">
 		<table id="table_footer">
 			<tr>
-				<td>
-					<h2>Quick Links</h2>
-				</td>
-				<td class="td_padding_left">
-					<h2>Additional Links</h2>
-				</td>
-				<td class="td_padding_left">
-					<h2>Contact</h2>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top">
+				<td valign="top" class="">
+				<h2>Quick Links</h2>
 					<a href="index.php"><div class="footer_button">HOME</div></a>
+					<a href="spreadsheets.php"><div class="footer_button">SPREADSHEETS</div></a>
 					<a href="search.php"><div class="footer_button">SEARCH</div></a>
 					<a href="reports.php"><div class="footer_button">REPORTS</div></a>
 					<a href="about.php"><div class="footer_button">ABOUT</div></a>
-					<a href="contact.php"><div class="footer_button">CONTACT</div></a>
 				</td>
 				<td valign="top" class="td_padding_left">
+				<h2>Additional Links</h2>
 					<a href="http://www.globalobesity.com.au/" target="_blank"><div class="footer_button">GLOBE</div></a>
 					<a href="http://www.deakin.edu.au/cphr" target="_blank"><div class="footer_button">CPHR</div></a>
 					<a href="http://www.deakin.edu.au/" target="_blank"><div class="footer_button">DEAKIN UNIVERSITY</div></a>
 				</td>
 				<td valign="top" class="td_padding_left">
-					<a href="mailto:#">email@deakin.edu.au</a> <br>
-					<a href="tel:#">00 0000 0000</a>
+				<h2>Contact</h2>
+					<a href="mailto:#" style="font-size: 14px">email@deakin.edu.au</a> <br>
+					<a href="tel:#" style="font-size: 14px">00 0000 0000</a>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="mobile_footer_td">
+				<h2>Additional Links</h2>
+					<a href="http://www.globalobesity.com.au/" target="_blank"><div class="footer_button">GLOBE</div></a>
+					<a href="http://www.deakin.edu.au/cphr" target="_blank"><div class="footer_button">CPHR</div></a>
+					<a href="http://www.deakin.edu.au/" target="_blank"><div class="footer_button">DEAKIN UNIVERSITY</div></a>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" class="mobile_footer_td">
+				<h2>Contact</h2>
+					<a href="mailto:#" style="font-size: 14px">email@deakin.edu.au</a> <br>
+					<a href="tel:#" style="font-size: 14px">00 0000 0000</a>
 				</td>
 			</tr>
 		</table>

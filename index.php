@@ -1,16 +1,46 @@
+<?php
+session_start();
+if(!isset($_SESSION["user_email"])) {
+	header('Location: login.php');
+}
+?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="styles.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="jquery.js" type="text/javascript"></script>
+<script src="javascript.js" type="text/javascript"></script>
+<link rel="icon" type="image/png" href="Media/Images/favicon.png">
 
 <style>
+	
+	/*Changes to CSS when screen width is 870px or less*/
+	@media only screen and (max-width: 880px) {
+		#banner {
+			display: none;
+		}
+		.banner_blurred {
+			display: none;
+		}
+		.home_table_image_td {
+			width: 0;
+			display: none;
+		}
+		.home_table_content_td {
+			width: 100%;
+		}
+		#home_table {
+			width: 100%;
+		}
+	}
+	
 	#banner {
 		width: 100%;
-		padding: 200px 0px;
+		padding: 150px 0px;
 		background-image: url(Media/Images/fresh_food_banner.jpg);
 		background-size: cover;
 		position: absolute;
@@ -18,8 +48,7 @@
 	}
 	.banner_blurred {
 		width: 100%;
-		padding: 200px 0px;
-		background-image: url(Media/Images/fresh_food_banner_blur.jpg);
+		padding: 150px 0px;
 		background-size: cover;
 		position: relative;
 		z-index: -2;
@@ -110,6 +139,12 @@
 	h1 a:hover {
 		color: #1C3C73;
 	}
+	.banner_blurred1 {			
+		width: 100%;
+		background-image: url(Media/Images/fresh_food_banner.jpg);
+		background-size: cover;
+		position: absolute;
+	}
 </style>
 
 </head>
@@ -118,57 +153,50 @@
 
 <div id="top_bar">
 	<div id="container">
-		<table id="top_bar_table">
-			<tr>
-				<td valign="middle" id="top_bar_contact">
-					email@deakin.edu.au <br> 00 0000 0000
-				</td>
-				<form id="quick_search_form" action="search_results.php" method="post">
-					<td align="right" valign="middle">
-						<input type="search" id="input_quick_search" name="input_main_search" placeholder="Keyword..." maxlength="35" >			
-					</td>
-					<td valign="middle" style="width: 100px;">
-						<input type="submit" id="button_quick_search" name="button_main_search" value="SEARCH">
-					</td>
-				</form>
-			</tr>
-		</table>
+		<img id="small_logo" src='Media/Images/logo_small.png'>
+		<a href="index.php"><div class="nav_button">Home</div></a>
+		<a href="spreadsheets.php"><div class="nav_button">Spreadsheets</div></a>
+		<a href="search.php"><div class="nav_button">Search</div></a>
+		<a href="reports.php"><div class="nav_button">Reports</div></a>
+		<a href="about.php"><div class="nav_button">About</div></a>
+		<div onclick="menu()" class="menu_icon"></div>
+		<a href="logout.php"><div class="button_login">Logout</div></a>
+		<a href="account_settings.php"><div class="button_login">Account Settings</div></a>
 	</div>
 </div>
 
-<div class="nav_bar">
-	<div id="container">
-		<a href="index.php"><div id="logo"></div></a>
-		<div id="button_section">
-			<a href="index.php"><div class="nav_button">HOME</div></a>
-			<a href="search.php"><div class="nav_button">SEARCH</div></a>
-			<a href="reports.php"><div class="nav_button">REPORTS</div></a>
-			<a href="about.php"><div class="nav_button">ABOUT</div></a>
-			<a href="contact.php"><div class="nav_button">CONTACT</div></a>
-		</div>
-	</div>
+<div id="mobile_nav">
+	<a href="index.php"><div class="mobile_nav_button"><div id="container">Home</div></div></a>
+	<a href="spreadsheets.php"><div class="mobile_nav_button"><div id="container">Spreadsheets</div></div></a>
+	<a href="search.php"><div class="mobile_nav_button"><div id="container">Search</div></div></a>
+	<a href="reports.php"><div class="mobile_nav_button"><div id="container">Reports</div></div></a>
+	<a href="about.php"><div class="mobile_nav_button"><div id="container">About</div></div></a>
+	<a href="account_settings.php"><div class="mobile_nav_button"><div id="container">Account Settings</div></div></a>
+	<a href="logout.php"><div class="mobile_nav_button"><div id="container">Logout</div></div></a>
 </div>
-<div class="nav_bar_space"></div>
 
 <div id="banner">
 	<div id="container">
-		<h1 style="margin: 0 auto; text-align: center; color: #EEE; font-size: 100px;">AUSTRALIAN</h1>
-		<h1 style="margin: 0 auto; text-align: center; color: #DDD; font-size: 30px;">SUPERMARKET PRICE MONITORING SYSTEM</h1>
+		<h1 style="margin: 0 auto; text-align: center; color: #EEE; font-size: 100px; font-family: 'OpenSans', sans-serif; font-weight: 900">AUSTRALIAN</h1>
+		<h1 style="margin: 0 auto; text-align: center; color: #DDD; font-size: 32px;">SUPERMARKET PRICE MONITORING SYSTEM</h1>
 	</div>
 </div>
 <div class="banner_blurred">
-	<h1 style="margin: 0 auto; text-align: center; color: #EEE; font-size: 100px;">AUSTRALIAN</h1>
-	<h1 style="margin: 0 auto; text-align: center; color: #DDD; font-size: 30px;">SUPERMARKET PRICE MONITORING SYSTEM</h1>
-</div>	
-
+  <div class="banner_blurred1">
+    <h1 style="margin: 0 auto; text-align: center; color: #EEE; font-size: 100px; font-family: 'OpenSans', sans-serif; font-weight: 900">AUSTRALIAN</h1>
+    <h1 style="margin: 0 auto; text-align: center; color: #DDD; font-size: 32px;">SUPERMARKET PRICE MONITORING SYSTEM</h1>
+  </div>
+  <h1 style="margin: 0 auto; text-align: center; color: #EEE; font-size: 100px; font-family: 'OpenSans', sans-serif; font-weight: 900">&nbsp;</h1>
+</div>
 <div class="dark_grey">
 	<div id="container">
 		<table id="home_table">
 			<tr>
 				<td class="home_table_content_td">
-					<h1>WHAT IS FOOD &amp; DRINK SCRAPER?</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<h1>What is Food &amp; Beverage Scraper?</h1>
+					<p>This website was designed for the members of Deakin's GLOBE to be able to analyse recent product data from Coles and Woolworths to assist in their research.</p>
+                    <p>A scraper is a program that retrieves data from a website and stores it for later use. This website gives you access to the data that has been scraped from the Coles and Woolworths stores.</p>
+					<p>The dataset currently consists of products from Coles and Woolworths collected on 21/12/2017 and 18/1/2018. This site enables you to download this data in its entirety in the form of CSV files, to view statistics of the data and to search for the most recently scraped products with a search term.</p>
 				</td>
 				<td class="home_table_image_td" id="explanation_image">
 					
@@ -181,15 +209,17 @@
 
 <div class="light_grey">
 	<div id="container">
+
 		<table id="home_table">
 			<tr>
 				<td class="home_table_image_td" id="search_image">
 					
 				</td>
 				<td class="home_table_content_td">
-					<h1><a href="search.php">SEARCH</a></h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<h1><a href="search.php">Search</a></h1>
+					<p>To use the search enter a keyword which your search will based around. Results are based on product name and brand name. Even though there are 2 sets of data from different dates, only the most recently scraped data will be returned in the search.</p>
+					<p>Searches can also be refined to show only results from one store and to show products only on special or not on special.</p>
+                    <p>At the bottom of the search results page there are some statistics based on the search results.</p>
 				</td>
 			</tr>
 		</table>
@@ -202,9 +232,9 @@
 		<table id="home_table">
 			<tr>
 				<td class="home_table_content_td">
-					<h1><a href="reports.php">REPORTS</a></h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<h1><a href="reports.php">Reports</a></h1>
+					<p>View a report that includes statistics in the form of graphs on all previously scraped data. The types of statistics include total number of products and specials, number of diet drinks compared to the number of non-diet drinks.</p>
+					<p> The page and statistics update automatically upon newly scraped data.</p>
 				</td>
 				<td class="home_table_image_td" id="reports_image">
 					
@@ -223,9 +253,9 @@
 					
 				</td>
 				<td class="home_table_content_td">
-					<h1><a href="about.php">ABOUT</a></h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<h1><a href="spreadsheets.php">Spreadsheets</a></h1>
+					<p>This section allows you to view very large sets of data in the browser or download it in the form of a CSV (which can be opened in Microsoft Excel). The data is brocken up by store and date scraped which will usually add up to roughly 15,000 products and be around 2.5 MB in size.</p>
+					<p> This is useful when you want to be able to see every single product for a given store and date and do your own research on the datasets.</p>
 				</td>
 			</tr>
 		</table>
@@ -238,9 +268,9 @@
 		<table id="home_table">
 			<tr>
 				<td class="home_table_content_td">
-					<h1><a href="contact.php">CONTACT</a></h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<h1>Contact</h1>
+					<p></p>
+					<p>For help with the Food and Beverage Scraper contact email@deakin.edu.au or call 00000000 for help.</p>
 				</td>
 				<td class="home_table_image_td" id="contact_image">
 					
@@ -255,32 +285,43 @@
 	<div id="container">
 		<table id="table_footer">
 			<tr>
-				<td>
-					<h2>Quick Links</h2>
+				<td valign="top">
+				<h2>Quick Links</h2>
+					<a href="index.php"><div class="footer_button">Home</div></a>
+					<a href="spreadsheets.php"><div class="footer_button">Spreadsheets</div></a>
+					<a href="search.php"><div class="footer_button">Search</div></a>
+					<a href="reports.php"><div class="footer_button">Reports</div></a>
+					<a href="about.php"><div class="footer_button">About</div></a>
 				</td>
-				<td class="td_padding_left">
-					<h2>Additional Links</h2>
+				<td valign="top" class="td_padding_left">
+				<div style="width: 160px; margin: 0 auto;">
+				<h2>Additional Links</h2>
+					<a href="http://www.globalobesity.com.au/" target="_blank"><div class="footer_button">GLOBE</div></a>
+					<a href="http://www.deakin.edu.au/cphr" target="_blank"><div class="footer_button">CPHR</div></a>
+					<a href="http://www.deakin.edu.au/" target="_blank"><div class="footer_button">Deakin University</div></a>
+				</div>
 				</td>
-				<td class="td_padding_left">
-					<h2>Contact</h2>
+				<td valign="top" class="td_padding_left">
+				<div style="float: right;">
+				<h2>Contact</h2>
+					<a href="mailto:#" style="font-size: 14px">email@deakin.edu.au</a> <br>
+					<a href="tel:#" style="font-size: 14px">00 0000 0000</a>
+				</div>	
 				</td>
 			</tr>
 			<tr>
-				<td valign="top">
-					<a href="index.php"><div class="footer_button">HOME</div></a>
-					<a href="search.php"><div class="footer_button">SEARCH</div></a>
-					<a href="reports.php"><div class="footer_button">REPORTS</div></a>
-					<a href="about.php"><div class="footer_button">ABOUT</div></a>
-					<a href="contact.php"><div class="footer_button">CONTACT</div></a>
-				</td>
-				<td valign="top" class="td_padding_left">
+				<td valign="top" class="mobile_footer_td">
+				<h2>Additional Links</h2>
 					<a href="http://www.globalobesity.com.au/" target="_blank"><div class="footer_button">GLOBE</div></a>
 					<a href="http://www.deakin.edu.au/cphr" target="_blank"><div class="footer_button">CPHR</div></a>
 					<a href="http://www.deakin.edu.au/" target="_blank"><div class="footer_button">DEAKIN UNIVERSITY</div></a>
 				</td>
-				<td valign="top" class="td_padding_left">
-					<a href="mailto:#">email@deakin.edu.au</a> <br>
-					<a href="tel:#">00 0000 0000</a>
+			</tr>
+			<tr>
+				<td valign="top" class="mobile_footer_td">
+				<h2>Contact</h2>
+					<a href="mailto:#" style="font-size: 14px">email@deakin.edu.au</a> <br>
+					<a href="tel:#" style="font-size: 14px">00 0000 0000</a>
 				</td>
 			</tr>
 		</table>
