@@ -1,0 +1,14 @@
+DROP TABLE accountsdb;
+
+
+
+CREATE TABLE accountsdb(
+email VARCHAR2(40) NOT NULL, firstName VARCHAR2(25) NOT NULL, lastName VARCHAR2(25) NOT NULL, passhash VARCHAR2(64) NOT NULL, salt VARCHAR2(64) NOT NULL, admin VARCHAR2(1) NOT NULL, emailVeri VARCHAR2(1) NOT NULL, veriHash VARCHAR(32), PRIMARY KEY (email)
+);
+
+
+
+INSERT INTO accountsdb VALUES ('admin', 'admin', 'admin', '8aabfda4925fcfc160f098af4835ccb0c5b204b9c034cf1e47d299971b42d06c', '07e659290d2e59bfe402d45c91961b10bd3767aae02a3228eec973ee83605bfe', 't', 't', 'fffb5f315e4edba3f049fe64ba4b3263');
+
+
+commit;
